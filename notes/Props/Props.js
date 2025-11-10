@@ -28,3 +28,33 @@ function Product(props) {
 function App() {
   return <Product name="Apple iWatch" price={500} rating="3.5/5.0" />;
 }
+
+// Event Handler in a Function Component
+
+import React from 'react';
+import Button from './Button';
+
+function Talker() {
+  function talk() {
+    let speech = '';
+    for (let i = 0; i < 10000; i++) {
+      speech += 'blah ';
+    }
+    alert(speech);
+	}
+  return <Button talk={talk}/>;
+}
+
+export default Talker;
+
+import React from 'react';
+
+function Button(props) {
+  return (
+    <button onClick={props.talk}>
+      Click me!
+    </button>
+  );
+}
+
+export default Button;
