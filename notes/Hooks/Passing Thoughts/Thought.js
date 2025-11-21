@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export function Thought(props) {
   const { thought, removeThought } = props;
+
+  useEffect(() => {
+    const timeRemaining = thought.expiresAt - Date.now();
+    const timeout = setTimeout(() => {
+      alert("Time has passed!");
+    }, timeRemaining);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [thought]);
 
   const handleRemoveClick = () => {
     removeThought(thought.id);
