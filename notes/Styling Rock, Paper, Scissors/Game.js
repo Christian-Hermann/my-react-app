@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "./Game.module.css";
 
 const CHOICES = [
   { name: "rock", emoji: "✊" },
@@ -58,9 +59,9 @@ function Game() {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1 style={{ fontSize: 48, marginTop: 0 }}>Rock Paper Scissors</h1>
-      <div>
+      <div className={styles.choices}>
         {CHOICES.map((choice) => (
           <button
             key={choice.name}
@@ -72,7 +73,7 @@ function Game() {
         ))}
       </div>
       {playerChoice && codeyChoice && (
-        <div>
+        <div className={styles.results}>
           <div style={choiceStyles}>
             <span style={emojiStyles}>{playerChoice.emoji}</span>
             <p style={nameStyles}>You chose {playerChoice.name}</p>
@@ -82,7 +83,9 @@ function Game() {
             <p style={nameStyles}>The computer chose {codeyChoice.name}</p>
           </div>
           <h2 style={resultStyles}>{result}</h2>
-          <button onClick={resetGame}>Play again</button>
+          <button className={styles.button} onClick={resetGame}>
+            Play again
+          </button>
         </div>
       )}
     </div>
