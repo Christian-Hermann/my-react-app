@@ -1,7 +1,7 @@
-function Video() {
+function Video({ src }) {
   return (
     <div>
-      <video controls autostart autoPlay muted />
+      <video src={src} />
     </div>
   );
 }
